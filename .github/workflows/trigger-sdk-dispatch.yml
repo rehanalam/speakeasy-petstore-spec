@@ -1,0 +1,23 @@
+# .github/workflows/trigger-sdk-dispatch.yml
+name: Notify SDK Repo
+
+on:
+  push:
+    paths:
+      - '**.yaml'
+      - '**.yml'
+      - '**.json'
+    branches:
+      - main
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.SDK_REPO_TOKEN }}
+          repository: rehanalam/speakeasy-petstore-typescript-sdk
+          event-type: trigger-sdk-generation
+          client-payload: '{"force": true}'
