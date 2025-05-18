@@ -1,4 +1,3 @@
-# .github/workflows/trigger-sdk-dispatch.yml
 name: Notify SDK Repo
 
 on:
@@ -20,4 +19,3 @@ jobs:
           token: ${{ secrets.SDK_REPO_TOKEN }}
           repository: rehanalam/speakeasy-petstore-typescript-sdk
           event-type: trigger-sdk-generation
-          client-payload: '{"force": true}'
